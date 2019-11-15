@@ -3,6 +3,7 @@
 {% block head %}
 <title>Thot Patrol</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://emoji-css.afeld.me/emoji.css">
 {% endblock %}
 
 {% block body %}
@@ -22,9 +23,11 @@
 
 <div class = "container" style="text-align: center;">
     <div class = "starter-template">
-        <h1>Thot Detector 2.0</h1>
-        <p class = "lead"> This is a Thot Patrol(TM) checkpoint. Please upload an image of yourself. </p>
-        <p> Face detection using <a href="https://docs.opencv.org/2.4/modules/objdetect/doc/cascade_classification.html" target="blank"> Cascade Classification </a> | Powered by Python, Flask, OpenCV </p>
+        <h1><i class="em em-bangbang" aria-role="presentation" aria-label="DOUBLE EXCLAMATION MARK"></i>Thot Detector 2.0<i class="em em-bangbang" aria-role="presentation" aria-label="DOUBLE EXCLAMATION MARK"></i></h1>
+        <p class = "lead"> This is a Thot Patrol&#174; checkpoint <i class="em em-checkered_flag" aria-role="presentation" aria-label="CHEQUERED FLAG"></i>
+            - Please upload an image of yourself <i class="em em-clap" aria-role="presentation" aria-label="CLAPPING HANDS SIGN"></i></p>
+        <p> Face detection using <a href="https://docs.opencv.org/2.4/modules/objdetect/doc/cascade_classification.html" target="blank"> Cascade Classification </a> 
+            | Powered by Python, Flask, OpenCV </p>
         <p> Image size limit: 2 MB </p>
         <p> By Darren Yau - Nov, 2019 </p>
     </div>
@@ -45,7 +48,7 @@
     {% if init %}
         {% if face_detected %}
             <div class="alert alert-success" style="margin-top:18px;">
-                <strong>Thot detected!</strong>
+                <strong>Thot detected!</strong> <i class="em em-face_with_symbols_on_mouth" aria-role="presentation" aria-label="SERIOUS FACE WITH SYMBOLS COVERING MOUTH"></i>
             </div>
             {% if image_to_show %}
                 <div>
@@ -54,7 +57,7 @@
             {% endif %}
         {% else %}
             <div class="alert alert-danger" style="margin-top:18px;">
-                <strong>No thot detected!</strong> You are good.
+                <strong>No thot detected!</strong> You are good. <i class="em em-100" aria-role="presentation" aria-label="HUNDRED POINTS SYMBOL"></i>
             </div>
         {% endif %}
     {% endif %}
