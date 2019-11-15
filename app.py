@@ -3,6 +3,9 @@ from pymongo import MongoClient
 
 from filter import videoCapture
 
+import cv2
+import numpy as np
+
 app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
