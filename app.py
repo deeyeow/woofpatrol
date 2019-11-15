@@ -49,6 +49,11 @@ def upload_file():
         blackwhite, scaleFactor=1.3, minNeighbors=4, minSize=(30, 30),
         flags=cv2.CASCADE_SCALE_IMAGE)
 
+    if len(rects) == 0:
+        face_detected = False
+    else:
+        face_detected = True
+
     # Add all bounding boxes to the image
     for x, y, w, h in rects:
         # crop a frame slightly larger than the face
@@ -70,7 +75,7 @@ def upload_file():
     encoded_image = base64.encodebytes(image_content)
     to_send = 'data:image/jpg;base64, ' + str(encoded_image, 'utf-8')
 
-    return render_template('index.html', image_to_show=to_send)
+    return render_template('index.html', image_to_show=to_send, face_detected=face_detected, init=True)
 
 
 

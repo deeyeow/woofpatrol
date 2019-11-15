@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 
 {% block head %}
-<title>Online DogFilter</title>
+<title>Thot Patrol</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 {% endblock %}
 
@@ -22,14 +22,13 @@
 
 <div class = "container" style="text-align: center;">
     <div class = "starter-template">
-        <h1>Thot Generator 2.0</h1>
-        <p class = "lead"> Upload an image to Thotify(TM) yourself! </p>
+        <h1>Thot Detector 2.0</h1>
+        <p class = "lead"> This is a Thot Patrol(TM) checkpoint. Please upload an image of yourself. </p>
         <p> Face detection using <a href="https://docs.opencv.org/2.4/modules/objdetect/doc/cascade_classification.html" target="blank"> Cascade Classification </a> | Powered by Python, Flask, OpenCV </p>
         <p> Image size limit: 2 MB </p>
         <p> By Darren Yau - Nov, 2019 </p>
     </div>
 </div>
-
 
 <header class="navbar">
     <form action="/upload" method="post" enctype="multipart/form-data" >
@@ -43,10 +42,22 @@
 </header>
 
 <div style="text-align: center;">
-    <div>
-        <img src="{{ image_to_show }}" class="center">
-    </div> 
-    
+    {% if init %}
+        {% if face_detected %}
+            <div class="alert alert-success" style="margin-top:18px;">
+                <strong>Thot detected!</strong>
+            </div>
+            {% if image_to_show %}
+                <div>
+                    <img src="{{ image_to_show }}" class="center">
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="alert alert-danger" style="margin-top:18px;">
+                <strong>No thot detected!</strong> You are good.
+            </div>
+        {% endif %}
+    {% endif %}
 </div>
 
 
