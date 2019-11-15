@@ -12,5 +12,16 @@
         <input type="submit" name="content" id="submit" value="Thotify Me">
     </form>
 
+
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+        
+        </video>
+    </div>
+    
+
 </div>
+
+<script src="{{url_for('static', filename='displayCameraFeed.js')}}">
+</script>
 {% endblock %}
