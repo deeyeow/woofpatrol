@@ -18,7 +18,15 @@ body, html {
 
 
 
-#container {
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/* #container {
     margin: 0px auto;
     width: 500px;
     height: 375px;
@@ -28,4 +36,4 @@ body, html {
     width: 500px;
     height: 375px;
     background-color: #666;
-}
+} */
