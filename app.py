@@ -4,6 +4,7 @@ from filter import apply_mask
 import cv2
 import numpy as np
 import base64
+import random
 
 from db import Client
 
@@ -84,9 +85,24 @@ def upload_file():
         counter += 1
 
 
-    return render_template('index.html', image_to_show=to_send, face_detected=face_detected, init=True)
+    return render_template('index.html', image_to_show=to_send, face_detected=face_detected, init_upload=True)
 
+@app.route('/mostwanted', methods=['POST'])
+def show_most_wanted():
+    size = client.getSize()
+    if (size == 0):
+        has_data = False
+        to_send = None
+    
+    else:
+        has_data = True
+        rand = random.randint(0, size - 1)
+        image_str = client.retrieveImage(rand)
 
+        encoded_image = base64.encodebytes(image_str)
+        to_send = 'data:image/jpg;base64, ' + str(encoded_image, 'utf-8')
+
+    return render_template('index.html', image_to_show=to_send, has_data=has_data, init_mostwanted=True)
 
 if __name__ == '__main__':
     app.run(debug=True)

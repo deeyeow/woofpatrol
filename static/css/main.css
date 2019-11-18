@@ -4,6 +4,10 @@ body, html {
     /* background-image: url('/static/images/thot_background.jpg'); */
 }
 
+form {
+    display: inline-block;
+}
+
 .content {
     margin: 0 auto;
     width: 400px;
