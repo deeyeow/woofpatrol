@@ -69,7 +69,19 @@ class Client():
         print('Collection cleared!')
 
 def main():
+    '''Interface for testing database'''
     client = Client()
+
+    while(True):
+        num = input('Enter an operation:\n(1) Save all photos\n(2) Clear database\n')
+        if (num == '1'):
+            client.printDesktopAll()
+            break
+        elif (num == "2"):
+            client.deleteAll()
+            break
+        else:
+            print('Invalid operation!')
 
     # with open("C:\\Users\\Darren\Desktop\\111319.jpg", "rb") as imageFile:
     #     str = base64.b64encode(imageFile.read())
@@ -77,8 +89,6 @@ def main():
     # collection.insert_one({"image_name": 1, "image_str": str})
 
     #client.printDesktop(1, 'test')
-    #client.printDesktopAll()
-    #client.deleteAll()
 
     # print(client.getSize())
     # print(client.getHighestCount())
