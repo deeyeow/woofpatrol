@@ -77,8 +77,11 @@ def main():
     # collection.insert_one({"image_name": 1, "image_str": str})
 
     #client.printDesktop(1, 'test')
-    client.printDesktopAll()
+    #client.printDesktopAll()
     #client.deleteAll()
+
+    # print(client.getSize())
+    # print(client.getHighestCount())
 
     
     

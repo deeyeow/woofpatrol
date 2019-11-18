@@ -10,10 +10,6 @@ from db import Client
 app = Flask(__name__)
 
 client = Client()
-if client.getSize() == 0:
-    counter = 0
-else:
-    counter = client.getHighestCount() + 1
 
 @app.route('/')
 def index():
@@ -79,7 +75,10 @@ def upload_file():
     if len(rects) == 0:
         face_detected = False
     else:
-        global counter
+        if client.getSize() == 0:
+            counter = 0
+        else:
+            counter = client.getHighestCount() + 1
         face_detected = True
         client.insertImage(counter, encoded_image)
         counter += 1
