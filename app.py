@@ -87,12 +87,12 @@ def upload_file():
 
     return render_template('index.html', image_to_show=to_send, face_detected=face_detected, init_upload=True)
 
-@app.route('/mostwanted', methods=['POST'])
+@app.route('/mostwanted')
 def show_most_wanted():
     size = client.getSize()
     if (size == 0):
         has_data = False
-        to_send = None
+        wanted_image = None
     
     else:
         has_data = True
@@ -100,9 +100,9 @@ def show_most_wanted():
         image_str = client.retrieveImage(rand)
 
         encoded_image = base64.encodebytes(image_str)
-        to_send = 'data:image/jpg;base64, ' + str(encoded_image, 'utf-8')
+        wanted_image = 'data:image/jpg;base64, ' + str(encoded_image, 'utf-8')
 
-    return render_template('index.html', image_to_show=to_send, has_data=has_data, init_mostwanted=True)
+    return render_template('index.html', wanted_image=wanted_image, has_data=has_data, init_mostwanted=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
