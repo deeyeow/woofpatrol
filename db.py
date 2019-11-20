@@ -42,7 +42,7 @@ class Client():
 
     def printDesktopAll(self):
         '''Print all images from database to desktop (testing purposes)'''
-        self.count = self.collection.count()
+        self.count = self.getSize()
         if self.count == 0:
             print('Collection is empty!')
         for i in range(0, self.count):
@@ -57,7 +57,7 @@ class Client():
 
     def getSize(self):
         '''Get the size of collection'''
-        return self.collection.count()
+        return self.collection.count_documents({})
 
     def getHighestCount(self):
         '''Return the highest image_id in collection'''
