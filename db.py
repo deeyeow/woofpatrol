@@ -63,6 +63,11 @@ class Client():
         '''Return the highest image_id in collection'''
         return self.collection.find_one({"image_id": {"$exists": True}}, sort=[("image_id", -1)])["image_id"]
 
+    def deleteSpecific(self, image_id):
+        '''Deletes a specific item in collection'''
+        self.collection.delete_one({"image_id": image_id})
+        print('Image deleted!')
+
     def deleteAll(self):
         '''Deletes all items in collection'''
         self.collection.delete_many({})
@@ -73,12 +78,16 @@ def main():
     client = Client()
 
     while(True):
-        num = input('Enter an operation:\n(1) Save all photos\n(2) Clear database\n')
+        num = input('Enter an operation:\n(1) Save all images\n(2) Clear database\n(3) Delete specific image\n')
         if (num == '1'):
             client.printDesktopAll()
             break
         elif (num == "2"):
             client.deleteAll()
+            break
+        elif (num == "3"):
+            image_id = input('Enter id of image to delete:\n')
+            client.deleteSpecific(int(image_id))
             break
         else:
             print('Invalid operation!')
